@@ -9,6 +9,8 @@ import org.junit.Test;
  * 13th October 2021
  * @author Mohmed Ashfaq
  * Unleashed Interview
+ * 
+ * Unit test covering a range of possible inputs. 
  *
  */
 
@@ -78,10 +80,16 @@ public class ConvertNumericToEnglishCurrenyUnitTest {
 		}
 	    
 	    @Test
-	  		public void billionInput() {
-	  			assertEquals("One Billion Dollars",
-	  					ConvertNumericToEnglishCurrency.getEnglishCurrencyFromNumber(1000000000));
-	  		}
+  		public void billionInput() {
+  			assertEquals("One Billion Dollars",
+  					ConvertNumericToEnglishCurrency.getEnglishCurrencyFromNumber(1000000000));
+  		}
+	    
+	    @Test
+  		public void billionAndSomethingInput() {
+  			assertEquals("One Billion One Hundred Eleven Million One Hundred Eleven Thousand One Hundred Eleven Dollars",
+  					ConvertNumericToEnglishCurrency.getEnglishCurrencyFromNumber(1111111111));
+  		}
 	   
 
 }

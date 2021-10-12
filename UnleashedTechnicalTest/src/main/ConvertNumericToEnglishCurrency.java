@@ -80,8 +80,8 @@ public class ConvertNumericToEnglishCurrency {
 
 		}
 
-		//Use recursive method for numbers greater than 99
-		//100 one hundred to 999.999 nine hundred and ninety nine
+		//Use recursive method in second part for numbers greater than 99 and less than 1000.
+		//Example 150 -> One Hundred Fifty. 
 		else if (number < 1000) { 
 			int remainder = (int) (number % 100);
 			int firstPartint = Math.round((number - remainder) / 100);
@@ -96,7 +96,11 @@ public class ConvertNumericToEnglishCurrency {
 
 		}
 
-		else if (number < 1_000_000) { // one thousand - nine thousand nine hundred ninety nine
+		//Range: one thousand - nine thousand nine hundred ninety nine
+		//For Thousands we use recursive to get the full word. 
+		//First part number can be between 1 to 99. Example 9999 first part: Nine Thousand
+		//Second part 999 we have already done for number < 1000 so use recursive.
+		else if (number < 1_000_000) { 
 			int remainder = (int) (number % 1000);
 			String firstPart = convert(number / 1000) + " Thousand";
 
@@ -108,6 +112,7 @@ public class ConvertNumericToEnglishCurrency {
 			return firstPart + secondPart;
 		}
 
+		//Same logic as above, but for millions.
 		else if (number < 1_000_000_000) {
 			int remainder = (int) (number % 1_000_000);
 			String firstPart = convert(number / 1_000_000) + " Million";
@@ -120,6 +125,7 @@ public class ConvertNumericToEnglishCurrency {
 			return firstPart + secondPart;
 		}
 		else {
+			//if greater than 100 million then use billion.
 			int remainder = (int) (number % 1_000_000_000);
 			String firstPart = convert(number / 1_000_000_000) + " Billion";
 
